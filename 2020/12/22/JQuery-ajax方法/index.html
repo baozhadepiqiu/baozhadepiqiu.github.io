@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>LCG</title>
+  <title>JQuery .ajax方法 | LCG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LCG">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Ajax方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery .ajax方法">
+<meta property="og:url" content="http://example.com/2020/12/22/JQuery-ajax%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="LCG">
+<meta property="og:description" content="Ajax方法">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-22T14:09:52.000Z">
+<meta property="article:modified_time" content="2020-12-22T14:24:45.252Z">
 <meta property="article:author" content="LCG">
+<meta property="article:tag" content="编程">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="LCG" type="application/atom+xml">
@@ -146,16 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-JQuery-ajax方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-JQuery-ajax方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/22/JQuery-ajax%E6%96%B9%E6%B3%95/">JQuery .ajax方法</a>
+    <h1 class="article-title" itemprop="name">
+      JQuery .ajax方法
     </h1>
   
 
@@ -168,10 +171,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Ajax方法"><a href="#Ajax方法" class="headerlink" title="Ajax方法"></a>Ajax方法</h1>
-        
-          <a class="article-more-a" href="/2020/12/22/JQuery-ajax%E6%96%B9%E6%B3%95/#more">more >></a>
-        
+        <h1 id="Ajax方法"><a href="#Ajax方法" class="headerlink" title="Ajax方法"></a>Ajax方法</h1><a id="more"></a>
+<hr>
+<p><font size=5 color="#a6c1ee">ajax() 方法通过 HTTP 请求加载远程数据。该方法是 jQuery 底层 AJAX 实现。</font><br>简单易用的高层实现见 $.get, $.post 等。$.ajax() 返回其创建的 XMLHttpRequest 对象。</p>
+<p>调用方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>一个完整的调用方式为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        url: <span class="string">&#x27;https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su&#x27;</span>,</span><br><span class="line">        data: &#123;</span><br><span class="line">            wd: $(<span class="string">&quot;#text&quot;</span>).val()</span><br><span class="line">        &#125;,</span><br><span class="line">        dataType: <span class="string">&#x27;jsonp&#x27;</span>,</span><br><span class="line">        jsonp: <span class="string">&#x27;cb&#x27;</span>,</span><br><span class="line">        <span class="function"><span class="title">success</span>(<span class="params">json</span>)</span> &#123;</span><br><span class="line">            $(<span class="string">&quot;#list&quot;</span>).html(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">            json.s.forEach(<span class="function"><span class="params">str</span> =&gt;</span> &#123;</span><br><span class="line">                $(<span class="string">`&lt;li&gt;<span class="subst">$&#123;str&#125;</span>&lt;/li&gt;`</span>).appendTo(<span class="string">&quot;#list&quot;</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">error</span>(<span class="params">err</span>)</span> &#123;</span><br><span class="line">            alert(<span class="string">&quot;请求错误！&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p>具体内部方法及内容：<br>options<br>类型：Object<br>可选。AJAX 请求设置。所有选项都是可选的。</p>
+<p>async<br>类型：Boolean<br>默认值: true。默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。<br>注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。</p>
+<p>beforeSend(XHR)<br>类型：Function<br>发送请求前可修改 XMLHttpRequest 对象的函数，如添加自定义 HTTP 头。<br>XMLHttpRequest 对象是唯一的参数。<br>这是一个 Ajax 事件。如果返回 false 可以取消本次 ajax 请求。</p>
+<p>cache<br>类型：Boolean<br>默认值: true，dataType 为 script 和 jsonp 时默认为 false。设置为 false 将不缓存此页面。<br>jQuery 1.2 新功能。</p>
+<p>complete(XHR, TS)<br>类型：Function<br>请求完成后回调函数 (请求成功或失败之后均调用)。<br>参数： XMLHttpRequest 对象和一个描述请求类型的字符串。<br>这是一个 Ajax 事件。</p>
+<p>contentType<br>类型：String<br>默认值: “application/x-www-form-urlencoded”。发送信息至服务器时内容编码类型。<br>默认值适合大多数情况。如果你明确地传递了一个 content-type 给 $.ajax() 那么它必定会发送给服务器（即使没有数据要发送）。</p>
+<p>context<br>类型：Object<br>这个对象用于设置 Ajax 相关回调函数的上下文。也就是说，让回调函数内 this 指向这个对象（如果不设定这个参数，那么 this 就指向调用本次 AJAX 请求时传递的 options 参数）。比如指定一个 DOM 元素作为 context 参数，这样就设置了 success 回调函数的上下文为这个 DOM 元素。<br>就像这样：<br>$.ajax({ url: “test.html”, context: document.body, success: function(){<br>        $(this).addClass(“done”);<br>      }});</p>
+<p>data<br>类型：String<br>发送到服务器的数据。将自动转换为请求字符串格式。GET 请求中将附加在 URL 后。查看 processData 选项说明以禁止此自动转换。必须为 Key/Value 格式。如果为数组，jQuery 将自动为不同值对应同一个名称。如 {foo:[“bar1”, “bar2”]} 转换为 ‘&amp;foo=bar1&amp;foo=bar2’。</p>
+<p>dataFilter<br>类型：Function</p>
+<p>给 Ajax 返回的原始数据的进行预处理的函数。提供 data 和 type 两个参数：data 是 Ajax 返回的原始数据，type 是调用 jQuery.ajax 时提供的 dataType 参数。函数返回的值将由 jQuery 进一步处理。</p>
+<p>dataType<br>类型：String<br>预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如 XML MIME 类型就被识别为 XML。在 1.4 中，JSON 就会生成一个 JavaScript 对象，而 script 则会执行这个脚本。随后服务器端返回的数据会根据这个值解析后，传递给回调函数。可用值:</p>
+<ul>
+<li>“xml”: 返回 XML 文档，可用 jQuery 处理。</li>
+<li>“html”: 返回纯文本 HTML 信息；包含的 script 标签会在插入 dom 时执行。</li>
+<li>“script”: 返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 “cache” 参数。注意：在远程请求时(不在同一个域下)，所有 POST 请求都将转为 GET 请求。（因为将使用 DOM 的 script标签来加载）</li>
+<li>“json”: 返回 JSON 数据 。</li>
+<li>“jsonp”: JSONP 格式。使用 JSONP 形式调用函数时，如 “myurl?callback=?” jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。</li>
+<li>“text”: 返回纯文本字符串</li>
+</ul>
+<p>error<br>类型：Function<br>默认值: 自动判断 (xml 或 html)。请求失败时调用此函数。<br>有以下三个参数：XMLHttpRequest 对象、错误信息、（可选）捕获的异常对象。<br>如果发生了错误，错误信息（第二个参数）除了得到 null 之外，还可能是 “timeout”, “error”, “notmodified” 和 “parsererror”。<br>这是一个 Ajax 事件。</p>
+<p>global<br>类型：Boolean<br>是否触发全局 AJAX 事件。默认值: true。设置为 false 将不会触发全局 AJAX 事件，如 ajaxStart 或 ajaxStop 可用于控制不同的 Ajax 事件。</p>
+<p>ifModified<br>类型：Boolean<br>仅在服务器数据改变时获取新数据。默认值: false。使用 HTTP 包 Last-Modified 头信息判断。在 jQuery 1.4 中，它也会检查服务器指定的 ‘etag’ 来确定数据没有被修改过。</p>
+<p>jsonp<br>类型：String<br>在一个 jsonp 请求中重写回调函数的名字。这个值用来替代在 “callback=?” 这种 GET 或 POST 请求中 URL 参数里的 “callback” 部分，比如 {jsonp:’onJsonPLoad’} 会导致将 “onJsonPLoad=?” 传给服务器。</p>
+<p>jsonpCallback<br>类型：String<br>为 jsonp 请求指定一个回调函数名。这个值将用来取代 jQuery 自动生成的随机函数名。这主要用来让 jQuery 生成度独特的函数名，这样管理请求更容易，也能方便地提供回调函数和错误处理。你也可以在想让浏览器缓存 GET 请求的时候，指定这个回调函数名。</p>
+<p>password<br>类型：String<br>用于响应 HTTP 访问认证请求的密码</p>
+<p>processData<br>类型：Boolean<br>默认值: true。默认情况下，通过data选项传递进来的数据，如果是一个对象(技术上讲只要不是字符串)，都会处理转化成一个查询字符串，以配合默认内容类型 “application/x-www-form-urlencoded”。如果要发送 DOM 树信息或其它不希望转换的信息，请设置为 false。</p>
+<p>scriptCharset<br>类型：String<br>只有当请求时 dataType 为 “jsonp” 或 “script”，并且 type 是 “GET” 才会用于强制修改 charset。通常只在本地和远程的内容编码不同时使用。</p>
+<p>success<br>类型：Function<br>请求成功后的回调函数。<br>参数：由服务器返回，并根据 dataType 参数进行处理后的数据；描述状态的字符串。<br>这是一个 Ajax 事件。</p>
+<p>traditional<br>类型：Boolean<br>如果你想要用传统的方式来序列化数据，那么就设置为 true。请参考工具分类下面的 jQuery.param 方法。</p>
+<p>timeout<br>类型：Number<br>设置请求超时时间（毫秒）。此设置将覆盖全局设置。</p>
+<p>type<br>类型：String<br>默认值: “GET”)。请求方式 (“POST” 或 “GET”)， 默认为 “GET”。注意：其它 HTTP 请求方法，如 PUT 和 DELETE 也可以使用，但仅部分浏览器支持。</p>
+<p>url<br>类型：String<br>默认值: 当前页地址。发送请求的地址。</p>
+<p>username<br>类型：String<br>用于响应 HTTP 访问认证请求的用户名。</p>
+<p>xhr<br>类型：Function<br>需要返回一个 XMLHttpRequest 对象。默认在 IE 下是 ActiveXObject 而其他情况下是 XMLHttpRequest 。用于重写或者提供一个增强的 XMLHttpRequest 对象。这个参数在 jQuery 1.3 以前不可用。</p>
+
       
 
       
@@ -193,16 +235,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/22/JQuery-ajax%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/22/JQuery-ajax%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/07/%E3%80%8A%E7%A5%9E%E8%AF%9D%E3%80%8B-%E7%AC%AC%E4%B8%80%E9%83%A8%E7%A9%BF%E8%B6%8A%E5%89%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《神话》--第一部穿越剧</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -222,157 +323,30 @@
 
 
 
-
   
-    <article id="post-《神话》-第一部穿越剧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/07/%E3%80%8A%E7%A5%9E%E8%AF%9D%E3%80%8B-%E7%AC%AC%E4%B8%80%E9%83%A8%E7%A9%BF%E8%B6%8A%E5%89%A7/">《神话》--第一部穿越剧</a>
-    </h1>
   
 
-        
-        <a href="/2020/12/07/%E3%80%8A%E7%A5%9E%E8%AF%9D%E3%80%8B-%E7%AC%AC%E4%B8%80%E9%83%A8%E7%A9%BF%E8%B6%8A%E5%89%A7/" class="archive-article-date">
-  	<time datetime="2020-12-07T15:20:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">影视评论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/07/%E3%80%8A%E7%A5%9E%E8%AF%9D%E3%80%8B-%E7%AC%AC%E4%B8%80%E9%83%A8%E7%A9%BF%E8%B6%8A%E5%89%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MarkDown基础操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/07/MarkDown%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">MarkDown基础操作</a>
-    </h1>
   
 
-        
-        <a href="/2020/12/07/MarkDown%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-12-07T11:55:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="工欲善其事，必先利其器"><a href="#工欲善其事，必先利其器" class="headerlink" title="工欲善其事，必先利其器"></a><font color="#a6c1ee">工欲善其事</font><font color="#fda085">，</font><font color="#f5576c">必先利其器</font></h1>
-        
-          <a class="article-more-a" href="/2020/12/07/MarkDown%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作手册</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/07/MarkDown%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'yilia'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
   
 
 
@@ -395,8 +369,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
