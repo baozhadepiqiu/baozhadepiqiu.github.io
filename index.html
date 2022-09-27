@@ -17,18 +17,66 @@
             <nav>
                 <a href="https://baozhadepiqiu.github.io/"><img src="./favicon.ico"></a>
                 <div class="jumpto">
-                    <i>首页</i>
-                    <i>关于</i>
-                    <i>作品</i>
-                    <i>时间线</i>
+                    <span>首页</span>
+                    <span>关于</span>
+                    <span>作品</span>
+                    <span>时间线</span>
                 </div>
             </nav>
-            <div>content</div>
+            <div class="center context">
+                <div class="text">
+                    <div>皮丘</div>
+                    <div>
+                        喜欢<span class="randomLikes"></span><span class="downLine">_</span>
+                    </div>
+                </div>
+                <script>
+                    let randomLikes = document.querySelector('.randomLikes'), downLine = document.querySelector('.downLine')
+                    let likeList = ['游戏', '摄影', '美食', '编程', '读书']
+                    // index 当前文字所在下标
+                    // radomNum 随机数
+                    // timer 文字显示定时器
+                    // moreShow 显示更长时间计数 数字
+                    let index = 0, radomNum = 0, moreShow = 0
+                    function inserText() {
+                        // 若当前没有文字显示
+                        if (index === 0) {
+                            radomNum = parseInt(Math.random() * likeList.length)
+                        }
+                        randomLikes.innerHTML = likeList[radomNum].slice(0, index + 1)
+                        index++
+                        timer = 0
+                        if (index >= 2) {
+                            index = -1
+                        }
+                    }
+
+                    // 每秒下标闪烁1次
+                    setInterval(() => {
+                        if (!downLine.classList.contains('show')) {
+                            // 显示下划线
+                            downLine.classList.add('show')
+                            // 如果当前的文字已经全部显示 则停留5秒
+                            if (index === -1 && moreShow < 5) {
+                                moreShow++
+                            } else {
+                                // 否则清空输入框并重新随机一个爱好
+                                inserText()
+                                moreShow = 0
+                            }
+                        } else {
+                            // 隐藏下划线
+                            downLine.classList.remove('show')
+                        }
+                    }, 500)
+                </script>
+            </div>
         </div>
     </div>
     <div class="">
 
     </div>
+    <footer></footer>
 </body>
 
 </html>

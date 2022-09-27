@@ -28,6 +28,7 @@ body{
 .content nav{
     display: flex;
     justify-content: space-between;
+    height: 120px;
 }
 
 .content nav .jumpto{
@@ -39,7 +40,7 @@ body{
     justify-content: space-between;
 }
 
-.content nav .jumpto i{
+.content nav .jumpto span{
     position: relative;
     display: flex;
     justify-content: center;
@@ -49,8 +50,33 @@ body{
     height: 40px;
 }
 
-.content nav .jumpto i:hover{
+.content nav .jumpto span:hover{
     background-color: rgba(0, 0, 0, .6);
+    transition-duration: 1s;
 }
 
+.content nav .jumpto span:hover::after{
+    position: absolute;
+    margin-bottom: 10px;
+    content: '';
+    border-bottom: 1px solid floralwhite;
+    width: 80%;
+    height: 100%;
+}
 
+.center.context{
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+    flex-direction: column;
+}
+
+.text{
+    width:  240px;
+}
+
+.downLine.show{
+    visibility: hidden;
+}
