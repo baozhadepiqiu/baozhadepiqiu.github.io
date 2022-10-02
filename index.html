@@ -14,6 +14,7 @@
 <body>
     <div class="summary">
         <div class="content">
+            <!-- 头部导航栏 -->
             <nav>
                 <a href="https://baozhadepiqiu.github.io/"><img src="./favicon.ico"></a>
                 <div class="jumpto">
@@ -23,60 +24,62 @@
                     <span>时间线</span>
                 </div>
             </nav>
-            <div class="center context">
+            <!-- 第一页 -->
+            <div class="firstPage center context">
                 <div class="text">
                     <div>皮丘</div>
                     <div>
-                        喜欢<span class="randomLikes"></span><span class="downLine">_</span>
+                        喜欢<span id="radomText"></span><span id="downLine">_</span>
                     </div>
                 </div>
                 <script>
-                    let randomLikes = document.querySelector('.randomLikes'), downLine = document.querySelector('.downLine')
+                    let text = document.getElementById('radomText'), downLine = document.getElementById('downLine');
+                    let timerText = null, timerLine = null, radomIndex = null, index = 0;
+
                     let likeList = ['游戏', '摄影', '美食', '编程', '读书']
-                    // index 当前文字所在下标
-                    // radomNum 随机数
-                    // timer 文字显示定时器
-                    // moreShow 显示更长时间计数 数字
-                    let index = 0, radomNum = 0, moreShow = 0
-                    function inserText() {
-                        // 若当前没有文字显示
+                    function innerText() {
+                        // 初始化
                         if (index === 0) {
-                            radomNum = parseInt(Math.random() * likeList.length)
+                            radomIndex = parseInt(Math.random() * likeList.length)
                         }
-                        randomLikes.innerHTML = likeList[radomNum].slice(0, index + 1)
-                        index++
-                        timer = 0
-                        if (index >= 2) {
+                        // 每2秒 添加一个字符
+                        if (index % 2 === 0) {
+                            text.innerHTML = likeList[radomIndex].slice(0, index / 2)
+                            // 每次输入新的字符的时候
+                            downLine.classList.remove('hidden')
+                            clearInterval(timerLine)
+                            // 下划线闪烁
+                            timerLine = setInterval(() => {
+                                if (downLine.classList.contains('hidden')) {
+                                    downLine.classList.remove('hidden')
+                                } else {
+                                    downLine.classList.add('hidden')
+                                }
+                            }, 500)
+                        }
+                        // 完整信息展示多5秒
+                        if (index === likeList[radomIndex].length + 10) {
                             index = -1
                         }
+                        index++
+                        timerText = setTimeout(innerText, 1000)
                     }
 
-                    // 每秒下标闪烁1次
-                    setInterval(() => {
-                        if (!downLine.classList.contains('show')) {
-                            // 显示下划线
-                            downLine.classList.add('show')
-                            // 如果当前的文字已经全部显示 则停留5秒
-                            if (index === -1 && moreShow < 5) {
-                                moreShow++
-                            } else {
-                                // 否则清空输入框并重新随机一个爱好
-                                inserText()
-                                moreShow = 0
-                            }
-                        } else {
-                            // 隐藏下划线
-                            downLine.classList.remove('show')
-                        }
-                    }, 500)
+                    innerText()
                 </script>
+            </div>
+            <div class="secondPage About">
+                <!-- 关于(过渡背景) -->
+            </div>
+            <div class="ThirdPage">
+                <!-- 作品 主要是 编程 摄影的作品 -->
+                <!-- 背景会展示摄影作品 在背景滚动三张为一组 最多3组 -->
             </div>
         </div>
     </div>
-    <div class="">
-
-    </div>
-    <footer></footer>
+    <footer>
+        <!-- 页脚 可以在此处做访问统计 -->
+    </footer>
 </body>
 
 </html>

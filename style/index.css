@@ -1,4 +1,4 @@
-body{
+body {
     height: 100vh;
     max-width: 100%;
     color: aliceblue;
@@ -6,7 +6,7 @@ body{
     overflow-x: hidden;
 }
 
-.summary{
+.summary {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,23 +15,24 @@ body{
     background-image: url('../images/roberto-nickson.jpg');
     background-attachment: fixed;
 }
+
 .content {
     width: 80%;
     height: 100%;
 }
 
-.summary .content img{
+.summary .content img {
     width: 80px;
     width: 80px;
 }
 
-.content nav{
+.content nav {
     display: flex;
     justify-content: space-between;
     height: 120px;
 }
 
-.content nav .jumpto{
+.content nav .jumpto {
     font-size: 18px;
     width: 360px;
     cursor: pointer;
@@ -40,7 +41,7 @@ body{
     justify-content: space-between;
 }
 
-.content nav .jumpto span{
+.content nav .jumpto span {
     position: relative;
     display: flex;
     justify-content: center;
@@ -50,12 +51,12 @@ body{
     height: 40px;
 }
 
-.content nav .jumpto span:hover{
+.content nav .jumpto span:hover {
     background-color: rgba(0, 0, 0, .6);
     transition-duration: 1s;
 }
 
-.content nav .jumpto span:hover::after{
+.content nav .jumpto span:hover::after {
     position: absolute;
     margin-bottom: 10px;
     content: '';
@@ -64,7 +65,7 @@ body{
     height: 100%;
 }
 
-.center.context{
+.center.context {
     font-size: 36px;
     display: flex;
     justify-content: center;
@@ -73,10 +74,11 @@ body{
     flex-direction: column;
 }
 
-.text{
-    width:  240px;
+.text {
+    width: 240px;
+    user-select: none;
 }
 
-.downLine.show{
+.hidden {
     visibility: hidden;
 }
